@@ -29,6 +29,17 @@ class Event:
 
 	def __repr__(self):
 		'''
-		represents what is seen by the user.
+		Represents what is seen by the user.
+		Specifically, this outputs a string including:
+		- the main content of the event
+		- a numbered-list of available choices
 		'''
-		pass
+		option_list = ''
+		for index, choice in enumerate(choices):
+			index += 1
+			option_list += f'{index}. {choice}\n'
+
+		return (
+			f'{self.content}\n'
+			f'{option_list}'
+		)

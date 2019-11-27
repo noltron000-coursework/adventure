@@ -27,4 +27,9 @@ class Story:
 		- a synopsis of the story
 		- the number of possible endings
 		'''
-		pass
+		return (
+			f'{self.title.uppercase()}\n'
+			f'{self.subtitle}\n'
+			f'{len(self.subtitle) * '-'}\n\n'
+			f'{self.synopsis}\n'
+		)
