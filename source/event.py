@@ -39,6 +39,10 @@ class Event:
 		==TODO==
 		add docstring
 		'''
+		# READ description of parent/event (if any)
+		# READ each&every choice option (if parent/event)
+		# WRITE description of each&every child/outcome
+		# REPEAT each&every time
 		input(
 			'\n'
 			'-----------------------------------------------\n'
