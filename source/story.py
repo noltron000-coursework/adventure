@@ -45,5 +45,13 @@ class Story:
 		self.subtitle = input(subtitle_please)
 		self.synopsis = input(synopsis_please)
 
-		self.root = Event()
+		self.add_root()
 		self.root.create()
+
+	def add_root(self, event = None):
+		if event is None:
+			event = Event()
+		if self.root is None:
+			self.root = event
+		else:
+			raise ValueError('the root event already exists!')
