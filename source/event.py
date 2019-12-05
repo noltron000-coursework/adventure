@@ -36,24 +36,39 @@ class Event:
 
 	def add_content(self, parent = None, choice_index = None):
 		'''
-		==TODO==
-		add docstring
+		This lets the user add string content to the event.
+
+		==NOTE==
+		This method should be called without parameters
+		just once, only when it is used in Story.write().
+		Otherwise, the parameters are needed to give
+		the user more context to what they are writting.
 		'''
+		# ==READ==
+		# The user should know the context of this function
+		# pretty much as soon as its called, or they will be
+		# asked to input information without knowing what for.
 		print(
 			f'\n{"-" * 47}\n'
 		)
-		# READ description of parent/event (if any)
-		# READ each&every choice option (if parent/event)
+
 		if not (parent is None and choice_index is None):
+			# Both choice & choice_index are needed for the user.
 			choice = parent.choices[choice_index]
+
+			# ==READ==
+			# The user needs to see what they are adding to.
+			# Here, they are adding an event's contents
+			# in response to a choice that they added earlier.
+			# Let them know exactly which choice that is.
+			# The event's contents are visited again later;
+			# it too might have choices of its own.
 			print(parent)
 			print(f'({choice_index + 1}. {choice})\n')
-			# display content text to user
-			# display choice text to user
-			pass
 
-		# WRITE description of each&every child/outcome
-		# REPEAT each&every time
+		# ==WRITE==
+		# Once the user knows the context of this function,
+		# they are given access to add a section to the story.
 		self.content = input(
 			'Please input the event\'s content:\t'
 		)
