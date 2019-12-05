@@ -62,18 +62,6 @@ class Story:
 			'Please input the story\'s synopsis:\t'
 		)
 
-		self.add_root()
+		self.root = Event()
 		self.root.add_content()
 		self.root.add_choices()
-
-	def add_root(self, event = None):
-		'''
-		==TODO==
-		add docstring
-		'''
-		if event is None:
-			event = Event()
-		if self.root is None:
-			self.root = event
-		else:
-			raise ValueError('the root event already exists!')
