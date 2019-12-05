@@ -63,12 +63,14 @@ class Event:
 			# Let them know exactly which choice that is.
 			# The event's contents are visited again later;
 			# it too might have choices of its own.
-			print(parent)
-			print(f'({choice_index + 1}. {choice})\n')
+			print(
+				f'{parent}\n'
+				f'({choice_index + 1}. {choice})'
+			)
 
 		# ==WRITE==
 		# Once the user knows the context of this function,
-		# they are given access to add a section to the story.
+		# they are asked to add a section to the story.
 		self.content = input(
 			'Please input the event\'s content:\t'
 		)
@@ -78,40 +80,57 @@ class Event:
 		==TODO==
 		add docstring
 		'''
+		# ==READ==
+		# The user should know the context of this function
+		# pretty much as soon as its called, or they will be
+		# asked to input information without knowing what for.
 		print(
 			f'\n{"-" * 47}\n'
 		)
-		# WRITE new choices for item
-		query = True
-		while query:
+
+		# The `choice` here is needed to start the while loop.
+		# It will be overwritten with a string later.
+		# The string will be False if it is empty,
+		# otherwise it is True because the user added data.
+		choice = True
+		# A loop is needed since an event can have many choices.
+		while choice:
+			# ==READ==
+			# The user will be asked if they want to add
+			# another `choice` option to the event.
+			# Because they will be asked about it multiple times,
+			# the loop's context should be repeatedly described
+			# so that the user doesn't forget what they are doing.
 			print(self)
-			# ask user if they want to add another choice
-			query = input(
-				'Would you like to add a new choice? (y/n):\t'
+
+			# ==WRITE==
+			# Once the user knows the context of this function,
+			# they are asked to add a `choice` to the event.
+			choice = input(
+				'Create a new choice for this event\n'
+				'(you can leave this blank to skip):\t'
 			)
-			# convert string to boolean
-			if query.lower() == 'y':
-				query = True
-			else:
-				query = False
 
-			if query:
-				print(
-					'Here are your choices thus far:\t'
-					f'{self.choices}'
-				)
-				# ask user if they want to add another choice
-				self.choices.append(input(
-					'Please input the choice\'s content:\t'
-				))
+			# Is `choice` left blank?
+			if choice:
+				self.choices.append(choice)
 
-		# CREATE an event for each choice
+		# Once the loop finished, `self.choices` is populated.
+		# If left empty, the event is considered terminal.
+		# The for loop will end immediately in this case.
 		for choice_index, choice in enumerate(self.choices):
+			# Create a new outcome event for each choice.
 			event = Event()
+			# Add content to the outcome `event`.
+			# The content branches off of the `choices` added here.
 			event.add_content(self, choice_index)
+			# The outcome `event` proceeds our `self`.
 			self.outcomes.append(event)
 
-		# CREATE choices for each event
+		# Once each of the `events` are created,
+		# they too can have `choices` of their own.
+		# This recursively creates yet more `choices`,
+		# and with those `choices` more `events`.
 		for event in self.outcomes:
 			event.add_choices()
 
