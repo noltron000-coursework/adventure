@@ -43,3 +43,6 @@ class Event:
 			f'{self.content}\n'
 			f'{option_list}\n'
 		)
+
+	def create(self):
+		pass

@@ -35,3 +35,15 @@ class Story:
 			f'{len(self.subtitle) * "-"}\n\n'
 			f'{self.synopsis}\n'
 		)
+
+	def create(self):
+		title_please = 'Please input the story\'s title:'
+		subtitle_please = 'Please input the story\'s subtitle:'
+		synopsis_please = 'Please input the story\'s synopsis:'
+
+		self.title = input(title_please)
+		self.subtitle = input(subtitle_please)
+		self.synopsis = input(synopsis_please)
+
+		self.root = Event()
+		self.root.create()
