@@ -49,5 +49,26 @@ class Event:
 			'Please input the event\'s content:\t'
 		)
 
+		query = True
+		while query:
+			query = input(
+				'Would you like to add a new choice? (y/n):\t'
+			)
+
+			if query.lower() == 'y':
+				query = True
+			else:
+				query = False
+
+			if query:
+				# self.add_choice()
+				pass
+
+		for index, choice in enumerate(self.choices):
+			print(f'{index + 1}', choice)
+			event = Event()
+			event.populate()
+			self.outcomes.append(event)
+
 	def is_terminal(self):
 		return self.outcomes == []
