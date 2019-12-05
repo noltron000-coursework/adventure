@@ -34,13 +34,18 @@ class Event:
 			f'{option_list}'
 		)
 
-	def populate(self):
+	def add_content(self, parent = None, choice_index = None):
 		'''
 		==TODO==
 		add docstring
 		'''
 		# READ description of parent/event (if any)
 		# READ each&every choice option (if parent/event)
+		if not (parent is None and choice_index is None):
+			# display content text to user
+			# display choice text to user
+			pass
+
 		# WRITE description of each&every child/outcome
 		# REPEAT each&every time
 		input(
@@ -57,6 +62,11 @@ class Event:
 			'Please input the event\'s content:\t'
 		)
 
+	def add_choices(self):
+		'''
+		==TODO==
+		add docstring
+		'''
 		query = True
 		while query:
 			query = input(
@@ -76,7 +86,7 @@ class Event:
 		for index, choice in enumerate(self.choices):
 			print(f'{index + 1}', choice)
 			event = Event()
-			event.populate()
+			event.add_content()
 			self.outcomes.append(event)
 
 	def is_terminal(self):

@@ -63,7 +63,8 @@ class Story:
 		)
 
 		self.add_root()
-		self.root.populate()
+		self.root.add_content()
+		self.root.add_choices()
 
 	def add_root(self, event = None):
 		'''
