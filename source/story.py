@@ -36,7 +36,7 @@ class Story:
 			f'{self.synopsis}\n'
 		)
 
-	def create(self):
+	def populate(self):
 		title_please = 'Please input the story\'s title:'
 		subtitle_please = 'Please input the story\'s subtitle:'
 		synopsis_please = 'Please input the story\'s synopsis:'
@@ -46,7 +46,7 @@ class Story:
 		self.synopsis = input(synopsis_please)
 
 		self.add_root()
-		self.root.create()
+		self.root.populate()
 
 	def add_root(self, event = None):
 		if event is None:

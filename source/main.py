@@ -1,4 +1,5 @@
 from story import *
 
-story = Story()
-story.create()
+if __name__ == '__main__':
+	story = Story()
+	story.populate()

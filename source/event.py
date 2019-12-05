@@ -39,7 +39,7 @@ class Event:
 			f'{option_list}'
 		)
 
-	def create(self):
+	def populate(self):
 		pass
 
 	def is_terminal(self):
