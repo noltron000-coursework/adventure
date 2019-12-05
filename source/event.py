@@ -15,12 +15,8 @@ class Event:
 
 		# Different choices lead to different outcomes.
 		# Their array index coorelates with one another.
-		self.choices = []  # remains empty if theres no choices.
-		self.outcomes = []
-
-		# The story ends here if this is true.
-		# You can only try again or quit.
-		self.terminal = False
+		self.choices = [] # remains empty if theres no choices.
+		self.outcomes = [] # empty if the event is terminal.
 
 		# See if the user has already visited this event.
 		# It is possible that the user has returned,
@@ -46,3 +42,6 @@ class Event:
 
 	def create(self):
 		pass
+
+	def is_terminal(self):
+		return self.outcomes == []
