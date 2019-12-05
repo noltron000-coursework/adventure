@@ -1,14 +1,17 @@
 class Event:
 	'''
-	==TODO==
-	add docstring
+	An event can be thought of as a discrete chunk of script
+	from the story. Like a short act in a play.
+
+	An event usually has some sort of choice at the end,
+	as the nature of choose-your-own adventure stories are.
+
+	The choices are visible to the reader...
+	...but not their outcome.
+	Their outcome, however, takes the form of another event!
 	'''
 
 	def __init__(self):
-		'''
-		==TODO==
-		add docstring
-		'''
 		# The content is long-form, unformatted text.
 		# It is the main information presented to the user.
 		self.content = ''
@@ -17,6 +20,10 @@ class Event:
 		# Their array index coorelates with one another.
 		self.choices = [] # remains empty if theres no choices.
 		self.outcomes = [] # empty if the event is terminal.
+		# ==NOTE==
+		# I was not sure which data-structure to use here,
+		# since the choice and outcome are always presented
+		# in a specific order designed by the writter.
 
 	def __repr__(self):
 		'''
@@ -36,73 +43,109 @@ class Event:
 
 	def add_content(self, parent = None, choice_index = None):
 		'''
-		==TODO==
-		add docstring
+		This asks the user add string content to the event.
+
+		==NOTE==
+		This method should be called without parameters
+		just once, only when it is used in Story.write().
+		Otherwise, the parameters are needed to give
+		the user more context to what they are writting.
 		'''
+		# ==READ==
+		# The user should know the context of this function
+		# pretty much as soon as its called, or they will be
+		# asked to input information without knowing what for.
 		print(
 			f'\n{"-" * 47}\n'
 		)
-		# READ description of parent/event (if any)
-		# READ each&every choice option (if parent/event)
-		if not (parent is None and choice_index is None):
-			choice = parent.choices[choice_index]
-			print(parent)
-			print(f'({choice_index + 1}. {choice})\n')
-			# display content text to user
-			# display choice text to user
-			pass
 
-		# WRITE description of each&every child/outcome
-		# REPEAT each&every time
+		if not (parent is None and choice_index is None):
+			# Both choice & choice_index are needed for the user.
+			choice = parent.choices[choice_index]
+
+			# ==READ==
+			# The user needs to see what they are adding to.
+			# Here, they are adding an event's contents
+			# in response to a choice that they added earlier.
+			# Let them know exactly which choice that is.
+			# The event's contents are visited again later;
+			# it too might have choices of its own.
+			print(
+				f'{parent}\n'
+				f'({choice_index + 1}. {choice})'
+			)
+
+		# ==WRITE==
+		# Once the user knows the context of this function,
+		# they are asked to add a section to the story.
 		self.content = input(
 			'Please input the event\'s content:\t'
 		)
 
 	def add_choices(self):
 		'''
-		==TODO==
-		add docstring
+		This asks the user add string choices to the event.
+		The choices should be based on the event's content.
 		'''
+		# ==READ==
+		# The user should know the context of this function
+		# pretty much as soon as its called, or they will be
+		# asked to input information without knowing what for.
 		print(
 			f'\n{"-" * 47}\n'
 		)
-		# WRITE new choices for item
-		query = True
-		while query:
+
+		# The `choice` here is needed to start the while loop.
+		# It will be overwritten with a string later.
+		# The string will be False if it is empty,
+		# otherwise it is True because the user added data.
+		choice = True
+		# A loop is needed since an event can have many choices.
+		while choice:
+			# ==READ==
+			# The user will be asked if they want to add
+			# another `choice` option to the event.
+			# Because they will be asked about it multiple times,
+			# the loop's context should be repeatedly described
+			# so that the user doesn't forget what they are doing.
 			print(self)
-			# ask user if they want to add another choice
-			query = input(
-				'Would you like to add a new choice? (y/n):\t'
+
+			# ==WRITE==
+			# Once the user knows the context of this function,
+			# they are asked to add a `choice` to the event.
+			choice = input(
+				'Create a new choice for this event\n'
+				'(you can leave this blank to skip):\t'
 			)
-			# convert string to boolean
-			if query.lower() == 'y':
-				query = True
-			else:
-				query = False
 
-			if query:
-				print(
-					'Here are your choices thus far:\t'
-					f'{self.choices}'
-				)
-				# ask user if they want to add another choice
-				self.choices.append(input(
-					'Please input the choice\'s content:\t'
-				))
+			# Is `choice` left blank?
+			if choice:
+				self.choices.append(choice)
 
-		# CREATE an event for each choice
+		# Once the loop finished, `self.choices` is populated.
+		# If left empty, the event is considered terminal.
+		# The for loop will end immediately in this case.
 		for choice_index, choice in enumerate(self.choices):
+			# Create a new outcome event for each choice.
 			event = Event()
+			# Add content to the outcome `event`.
+			# The content branches off of the `choices` added here.
 			event.add_content(self, choice_index)
+			# The outcome `event` proceeds our `self`.
 			self.outcomes.append(event)
 
-		# CREATE choices for each event
+		# Once each of the `events` are created,
+		# they too can have `choices` of their own.
+		# This recursively creates yet more `choices`,
+		# and with those `choices` more `events`.
 		for event in self.outcomes:
 			event.add_choices()
 
 	def is_terminal(self):
 		'''
-		==TODO==
-		add docstring
+		Checks if the node is a leaf, or an ending.
+		There are no more choices to be made, this is the end.
+
+		Was it happy? Was it sad? That's for you to decide!
 		'''
 		return self.outcomes == []
