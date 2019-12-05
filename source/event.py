@@ -32,12 +32,11 @@ class Event:
 		'''
 		option_list = ''
 		for index, choice in enumerate(choices):
-			index += 1
-			option_list += f'{index}. {choice}\n'
+			option_list += f'{index + 1}. {choice}\n'
 
 		return (
 			f'{self.content}\n'
-			f'{option_list}\n'
+			f'{option_list}'
 		)
 
 	def create(self):
