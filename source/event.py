@@ -26,7 +26,7 @@ class Event:
 		- a numbered-list of available choices
 		'''
 		option_list = ''
-		for index, choice in enumerate(choices):
+		for index, choice in enumerate(self.choices):
 			option_list += f'{index + 1}. {choice}\n'
 
 		return (
@@ -39,9 +39,15 @@ class Event:
 		==TODO==
 		add docstring
 		'''
+		print(
+			f'\n{"-" * 47}\n'
+		)
 		# READ description of parent/event (if any)
 		# READ each&every choice option (if parent/event)
 		if not (parent is None and choice_index is None):
+			choice = parent.choices[choice_index]
+			print(parent)
+			print(f'({choice_index + 1}. {choice})\n')
 			# display content text to user
 			# display choice text to user
 			pass
@@ -57,14 +63,17 @@ class Event:
 		==TODO==
 		add docstring
 		'''
+		print(
+			f'\n{"-" * 47}\n'
+		)
 		# WRITE new choices for item
 		query = True
 		while query:
-			# ask user if they
+			print(self)
+			# ask user if they want to add another choice
 			query = input(
 				'Would you like to add a new choice? (y/n):\t'
 			)
-
 			# convert string to boolean
 			if query.lower() == 'y':
 				query = True
@@ -72,16 +81,24 @@ class Event:
 				query = False
 
 			if query:
-				# display choices thus far;
+				print(
+					'Here are your choices thus far:\t'
+					f'{self.choices}'
+				)
 				# ask user if they want to add another choice
-				# ==TODO==
-				# self.add_choice()
-				pass
+				self.choices.append(input(
+					'Please input the choice\'s content:\t'
+				))
 
 		# CREATE an event for each choice
+		for choice_index, choice in enumerate(self.choices):
 			event = Event()
-			event.add_content()
+			event.add_content(self, choice_index)
 			self.outcomes.append(event)
+
+		# CREATE choices for each event
+		for event in self.outcomes:
+			event.add_choices()
 
 	def is_terminal(self):
 		'''

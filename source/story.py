@@ -42,12 +42,12 @@ class Story:
 		add docstring
 		'''
 		input(
-			'===============================================\n'
+			f'{"=" * 47}\n'
 			'        Welcome to Adventure Creator!\n'
 			'This CLI tool will help you get started on your\n'
 			'very own choose-your-own-adventure style story.\n'
 			'         ~~PRESS ENTER TO CONTINUE~~\n'
-			'===============================================\n'
+			f'{"=" * 47}\n'
 		)
 
 		self.title = input(
