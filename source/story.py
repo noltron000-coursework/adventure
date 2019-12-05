@@ -2,15 +2,14 @@ from event import *
 
 class Story:
 	'''
-	==TODO==
-	add docstring
+	A story points a reader to the first event.
+	It also holds metadata, such as its title.
+
+	Finally, it holds the function of impetus -- self.write().
+	This thing sets off all the recursion within the Event.
 	'''
 
 	def __init__(self):
-		'''
-		==TODO==
-		add docstring
-		'''
 		# The content is long-form, unformatted text.
 		# It is essentially the meta-data of the story.
 		self.title = ''
@@ -36,10 +35,11 @@ class Story:
 			f'{self.synopsis}\n'
 		)
 
-	def populate(self):
+	def write(self):
 		'''
-		==TODO==
-		add docstring
+		Write will ask the user for some basic metadata.
+		Then, it will start the process of asking for all the
+		other data and storylines that a good adventure needs.
 		'''
 		input(
 			f'{"=" * 47}\n'
