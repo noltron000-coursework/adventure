@@ -18,11 +18,6 @@ class Event:
 		self.choices = [] # remains empty if theres no choices.
 		self.outcomes = [] # empty if the event is terminal.
 
-		# See if the user has already visited this event.
-		# It is possible that the user has returned,
-		# and that new options are available to them.
-		self.visited = False
-
 	def __repr__(self):
 		'''
 		Represents what is seen by the user.
