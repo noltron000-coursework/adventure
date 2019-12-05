@@ -48,16 +48,6 @@ class Event:
 
 		# WRITE description of each&every child/outcome
 		# REPEAT each&every time
-		input(
-			'\n'
-			'-----------------------------------------------\n'
-			'   You are creating a new event in the story.\n'
-			'    An event is an overarching block or act,\n'
-			' which is presented to the reader all at once.\n'
-			'         ~~PRESS ENTER TO CONTINUE~~\n'
-			'-----------------------------------------------\n'
-		)
-
 		self.content = input(
 			'Please input the event\'s content:\t'
 		)
@@ -67,24 +57,28 @@ class Event:
 		==TODO==
 		add docstring
 		'''
+		# WRITE new choices for item
 		query = True
 		while query:
+			# ask user if they
 			query = input(
 				'Would you like to add a new choice? (y/n):\t'
 			)
 
+			# convert string to boolean
 			if query.lower() == 'y':
 				query = True
 			else:
 				query = False
 
 			if query:
+				# display choices thus far;
+				# ask user if they want to add another choice
 				# ==TODO==
 				# self.add_choice()
 				pass
 
-		for index, choice in enumerate(self.choices):
-			print(f'{index + 1}', choice)
+		# CREATE an event for each choice
 			event = Event()
 			event.add_content()
 			self.outcomes.append(event)
