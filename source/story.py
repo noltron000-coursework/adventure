@@ -37,13 +37,26 @@ class Story:
 		)
 
 	def populate(self):
-		title_please = 'Please input the story\'s title:'
-		subtitle_please = 'Please input the story\'s subtitle:'
-		synopsis_please = 'Please input the story\'s synopsis:'
+		input(
+			'===============================================\n'
+			'        Welcome to Adventure Creator!\n'
+			'This CLI tool will help you get started on your\n'
+			'very own choose-your-own-adventure style story.\n'
+			'         ~~PRESS ENTER TO CONTINUE~~\n'
+			'===============================================\n'
+		)
 
-		self.title = input(title_please)
-		self.subtitle = input(subtitle_please)
-		self.synopsis = input(synopsis_please)
+		self.title = input(
+			'Please input the story\'s title:\t'
+		)
+
+		self.subtitle = input(
+			'Please input the story\'s subtitle:\t'
+		)
+
+		self.synopsis = input(
+			'Please input the story\'s synopsis:\t'
+		)
 
 		self.add_root()
 		self.root.populate()
