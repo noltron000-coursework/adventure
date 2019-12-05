@@ -35,6 +35,10 @@ class Event:
 		)
 
 	def populate(self):
+		'''
+		==TODO==
+		add docstring
+		'''
 		input(
 			'\n'
 			'-----------------------------------------------\n'
@@ -61,6 +65,7 @@ class Event:
 				query = False
 
 			if query:
+				# ==TODO==
 				# self.add_choice()
 				pass
 
@@ -71,4 +76,8 @@ class Event:
 			self.outcomes.append(event)
 
 	def is_terminal(self):
+		'''
+		==TODO==
+		add docstring
+		'''
 		return self.outcomes == []

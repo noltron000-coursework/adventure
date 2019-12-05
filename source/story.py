@@ -37,6 +37,10 @@ class Story:
 		)
 
 	def populate(self):
+		'''
+		==TODO==
+		add docstring
+		'''
 		input(
 			'===============================================\n'
 			'        Welcome to Adventure Creator!\n'
@@ -62,6 +66,10 @@ class Story:
 		self.root.populate()
 
 	def add_root(self, event = None):
+		'''
+		==TODO==
+		add docstring
+		'''
 		if event is None:
 			event = Event()
 		if self.root is None:
