@@ -4,7 +4,7 @@ class Event:
 	add docstring
 	'''
 
-	def __init__():
+	def __init__(self):
 		'''
 		==TODO==
 		add docstring
@@ -41,5 +41,5 @@ class Event:
 
 		return (
 			f'{self.content}\n'
-			f'{option_list}'
+			f'{option_list}\n'
 		)

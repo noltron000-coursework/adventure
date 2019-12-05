@@ -1,10 +1,12 @@
+from event import *
+
 class Story:
 	'''
 	==TODO==
 	add docstring
 	'''
 
-	def __init__():
+	def __init__(self):
 		'''
 		==TODO==
 		add docstring
@@ -30,6 +32,6 @@ class Story:
 		return (
 			f'{self.title.uppercase()}\n'
 			f'{self.subtitle}\n'
-			f'{len(self.subtitle) * '-'}\n\n'
+			f'{len(self.subtitle) * "-"}\n\n'
 			f'{self.synopsis}\n'
 		)
