@@ -35,7 +35,19 @@ class Event:
 		)
 
 	def populate(self):
-		pass
+		input(
+			'\n'
+			'-----------------------------------------------\n'
+			'   You are creating a new event in the story.\n'
+			'    An event is an overarching block or act,\n'
+			' which is presented to the reader all at once.\n'
+			'         ~~PRESS ENTER TO CONTINUE~~\n'
+			'-----------------------------------------------\n'
+		)
+
+		self.content = input(
+			'Please input the event\'s content:\t'
+		)
 
 	def is_terminal(self):
 		return self.outcomes == []
