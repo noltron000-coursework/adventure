@@ -1,14 +1,17 @@
 class Event:
 	'''
-	==TODO==
-	add docstring
+	An event can be thought of as a discrete chunk of script
+	from the story. Like a short act in a play.
+
+	An event usually has some sort of choice at the end,
+	as the nature of choose-your-own adventure stories are.
+
+	The choices are visible to the reader...
+	...but not their outcome.
+	Their outcome, however, takes the form of another event!
 	'''
 
 	def __init__(self):
-		'''
-		==TODO==
-		add docstring
-		'''
 		# The content is long-form, unformatted text.
 		# It is the main information presented to the user.
 		self.content = ''
@@ -17,6 +20,10 @@ class Event:
 		# Their array index coorelates with one another.
 		self.choices = [] # remains empty if theres no choices.
 		self.outcomes = [] # empty if the event is terminal.
+		# ==NOTE==
+		# I was not sure which data-structure to use here,
+		# since the choice and outcome are always presented
+		# in a specific order designed by the writter.
 
 	def __repr__(self):
 		'''
@@ -36,7 +43,7 @@ class Event:
 
 	def add_content(self, parent = None, choice_index = None):
 		'''
-		This lets the user add string content to the event.
+		This asks the user add string content to the event.
 
 		==NOTE==
 		This method should be called without parameters
@@ -77,8 +84,8 @@ class Event:
 
 	def add_choices(self):
 		'''
-		==TODO==
-		add docstring
+		This asks the user add string choices to the event.
+		The choices should be based on the event's content.
 		'''
 		# ==READ==
 		# The user should know the context of this function
@@ -136,7 +143,9 @@ class Event:
 
 	def is_terminal(self):
 		'''
-		==TODO==
-		add docstring
+		Checks if the node is a leaf, or an ending.
+		There are no more choices to be made, this is the end.
+
+		Was it happy? Was it sad? That's for you to decide!
 		'''
 		return self.outcomes == []
