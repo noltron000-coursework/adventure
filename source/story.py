@@ -30,7 +30,7 @@ class Story:
 		- the number of possible endings
 		'''
 		return (
-			f'{self.title.uppercase()}\n'
+			f'{self.title.upper()}\n'
 			f'{self.subtitle}\n'
 			f'{len(self.subtitle) * "-"}\n\n'
 			f'{self.synopsis}\n'
