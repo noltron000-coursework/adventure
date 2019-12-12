@@ -3,9 +3,11 @@ import os
 class FileWritter:
 	def __init__(self, story):
 		self.story = story
-		self.dir = 'story'
+		self.dir = input('What folder-name do you want your output files to be in? ')
+		if self.dir == '':
+			self.dir = 'story'
 		if os.path.isdir(f'./{self.dir}'):
-			raise
+			raise # ValueError('This folder already exists! Please try again.')
 
 		else:
 			os.mkdir(f'./{self.dir}')
