@@ -1,4 +1,5 @@
 # Adventure Creator
+## [Medium Article](https://medium.com/@noltron000/decisions-adventures-and-trees-ca91a1885600)
 ## Usage
 1. clone the project to a directory of your choice
 1. navigate to the directory in your terminal
